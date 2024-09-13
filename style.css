@@ -1,0 +1,29 @@
+/*html{
+    border: 5px solid blue;
+
+}
+
+body{
+    border: 5px solid black;
+    width: 300px;
+}*/
+
+.container{
+    border: 2px solid black;
+    
+}
+
+.search-box{
+    border: 2px solid red;
+}
+
+form{
+    border: 2px solid blue;
+    display: flex;
+    justify-content: center;
+}
+
+.tablo{
+    border: 5px solid red ;
+    margin-top: 50px;
+}
