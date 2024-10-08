@@ -33,43 +33,67 @@
    </div>
 
 
+   <?php 
+                    
+                        $reqSearch = $connexionDataBase ->query('SELECT * FROM etudiant');
+
+                        
+
+                    ?>
+
+                    <div class="result-search">
+
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">NOM</th>
+                                <th scope="col">AGE</th>
+                                <th scope="col">NIVEAU</th>
+                                <th scope="col">ACTIONS</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <?php
+                
+                                    while($resulSearch = $reqSearch -> fetch()){ 
+
+                                ?>
+                            
+                                    <tr>
+                                        <th scope="row"><?php echo $resulSearch['id'] ;?></th>
+                                        <td><?php echo $resulSearch['nom'] ;?></td>
+                                        <td><?php echo $resulSearch['age'] ;?></td>
+                                        <td><?php echo $resulSearch['niveau'] ;?></td>
+                                        <td>
+                                            <span>Delete</span>
+                                            <span>update</span>
+                                        </td>
+                                        
+
+                                    </tr>
+                                
+                                
+                                <?php 
+                    
+                                    }
+                    
+
+                                ?>
+                            
+
+                            </tbody>
+                        </table>
+
+                    </div>
 
 
-    <div class="tablo">
-
-    <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
 
 
 
-    </div> 
+
    
    
    

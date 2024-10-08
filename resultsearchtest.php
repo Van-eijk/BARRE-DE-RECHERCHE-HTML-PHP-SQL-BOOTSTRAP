@@ -19,41 +19,8 @@
                     <title>Resultats des recherches</title>
                 </head>
                 <body>
-                    <h1>Resultats des recherches</h1>
+                <h2>Resultats des recherches</h2>
 
-                    <div class="result-search">
-
-                        <table class="table">
-                        <thead>
-                            <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            </tr>
-                            <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                            </tr>
-                            <tr>
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
-                            </tr>
-                        </tbody>
-                        </table>
-
-                    </div>
 
                     <?php 
                         $reqSearch = $connexionDataBase ->prepare('SELECT * FROM etudiant WHERE nom LIKE :nomEtudiant');
@@ -61,25 +28,75 @@
                         $reqSearch -> execute(array(
                             'nomEtudiant'=>  $motCle
                         ));
-                    
-
-                        while($resulSearch = $reqSearch -> fetch()){ 
-
-                            ?>
-                               <div>
-                                    <strong> <?php echo $resulSearch['nom'] ;?> </strong>
-                                    <strong> <?php echo $resulSearch['age'] ;?> </strong>
-                                    <strong> <?php echo $resulSearch['niveau'] ;?> </strong>
-                               </div>
-
-                            <?php 
-                            
-                        }
-                      
-                        
-                         
 
                     ?>
+
+                    <div class="result-search">
+
+                        <?php
+                            if($reqSearch -> rowCount() >= 1){
+                            ?>
+
+                                <table class="table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">NOM</th>
+                                        <th scope="col">AGE</th>
+                                        <th scope="col">NIVEAU</th>
+                                        <th scope="col">ACTIONS</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <?php
+                                            
+
+                                                while($resulSearch = $reqSearch -> fetch()){ 
+                                                        
+
+
+                                                ?>
+                                    
+                                                    <tr>
+                                                        <th scope="row"><?php echo $resulSearch['id'] ;?></th>
+                                                        <td><?php echo $resulSearch['nom'] ;?></td>
+                                                        <td><?php echo $resulSearch['age'] ;?></td>
+                                                        <td><?php echo $resulSearch['niveau'] ;?></td>
+                                                    </tr>
+                                        
+                                        
+                                                <?php 
+                                    
+                                                    }
+                                                                                            
+                                                
+                            
+
+                                        ?>
+                                    
+
+                                    </tbody>
+                                </table>
+                            
+
+                            <?php
+                                }
+                                else{
+                                    echo "Aucun resultat" ;
+                                }
+                            ?>
+
+                    </div>
+
+
+                    
+                    
+
+                
+
+                    
                     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
                 </body>
